@@ -66,6 +66,7 @@ const maxSum = (arr) => {
   return currentMax;
 };
 
+
 // Merge Arrays
 // Imagine you have two arrays which have already been
 // sorted. Write an algorithm to merge the two arrays
@@ -152,6 +153,26 @@ const removeChars = (string, chars) => {
   return newString;
 };
 
+// function removeStr(str1, str2){
+//   let tempArr=[], newStr=[], newStrMod='';
+//   let index =0, j=0;
+
+//   for(let i=0; i<str2.length; i++){
+//       index = (Math.abs(str2[i].charCodeAt() - 'a'.charCodeAt()));
+//       if(!tempArr[index]){
+//           tempArr[index]=1;
+//       }       
+//   }    
+//   for(let i=0; i<str1.length;i++){
+//       index = (Math.abs(str1[i].charCodeAt() - 'a'.charCodeAt()));
+//       if(!tempArr[index]){
+//           newStr[j++] = str1[i];
+//       }
+//   }
+//   for(let i=0; i<newStr.length; i++){
+//       newStrMod +=newStr[i];
+//   }
+//   return newStrMod;
 
 /* Products
 Given an array of numbers, write an algorithm to find out the products of every number, except the one at that index.
@@ -189,8 +210,16 @@ Input:
 */
 
 const zeroer = (arr) => {
+  let newArr = [];
 
-}
+  for (let i=0; i < arr.length; i++) {
+    for (let j=0; j < arr[i].length; j++) {
+      if (arr[i][j] === 0) {
+        newArr.push([i,j]);
+      }
+    }
+  }
+};
 
 
 function main() {
