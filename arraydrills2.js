@@ -75,42 +75,51 @@ const maxSum = (arr) => {
 // Output:[1, 2, 3, 3, 5, 6, 8, 8, 9, 10, 11]
 
 // VERSION 1
-// const arrMerge = (arr1, arr2) => {
-//   const mergedArr = [];
-//   // const longestArr = arr1.length >= arr2.length ? arr1 : arr2;
-//   while (arr1.length > 0 || arr2.length > 0) {
-//     if (arr1[0] < arr2[0]) {
-//       mergedArr.push(arr1[0]);
-//       arr1.shift();
-//     }
-//     if (arr2[0] < arr1[0]) {
-//       mergedArr.push(arr2[0]);
-//       arr2.shift();
-//     }
-//     console.log('merged: ', mergedArr);
-//     console.log('arr1: ', arr1);
-//     console.log('arr2: ', arr2);
-//   }
-//   return mergedArr;
-// };
-
-// VERSION 2
 const arrMerge = (arr1, arr2) => {
-  const mergedArr = arr1;
-  for (let i=0; i < arr2.length; i++) {
-    mergedArr.push(arr2[i]);
-  }
-  for (let i=0; i < mergedArr.length; i++) {
-    for (let j=0; j < i; j++) {
-      if (mergedArr[j] > mergedArr[i]) {
-        const tempNum = mergedArr[i];
-        mergedArr[i] = mergedArr[j];
-        mergedArr[j] = tempNum;
-      }
+  const mergedArr = [];
+  let index1 = 0;
+  let index2 = 0;
+ 
+  while (index1 < arr1.length && index2 < arr2.length) {
+    if (arr1[index1] <= arr2[index2]) {
+      mergedArr.push(arr1[index1++]);
     }
+    else {
+      mergedArr.push(arr2[index2++]);
+    }
+  //   console.log('merged: ', mergedArr);
+  //   console.log('arr1: ', arr1);
+  //   console.log('arr2: ', arr2);
+  }
+
+  if (index2 < arr2.length) {
+    index1 = index2;
+    arr1 = arr2;
+  }
+
+  while (index1 < arr1.length) {
+    mergedArr.push(arr1[index1++]);
   }
   return mergedArr;
 };
+
+// VERSION 2
+// const arrMerge = (arr1, arr2) => {
+//   const mergedArr = arr1;
+//   for (let i=0; i < arr2.length; i++) {
+//     mergedArr.push(arr2[i]);
+//   }
+//   for (let i=0; i < mergedArr.length; i++) {
+//     for (let j=0; j < i; j++) {
+//       if (mergedArr[j] > mergedArr[i]) {
+//         const tempNum = mergedArr[i];
+//         mergedArr[i] = mergedArr[j];
+//         mergedArr[j] = tempNum;
+//       }
+//     }
+//   }
+//   return mergedArr;
+// };
 
 // Remove Characters
 // Write an algorithm that deletes given characters from a
@@ -144,6 +153,44 @@ const removeChars = (string, chars) => {
 };
 
 
+/* Products
+Given an array of numbers, write an algorithm to find out the products of every number, except the one at that index.
+
+Input:[1, 3, 9, 4]
+Output:[108, 36, 12, 27]
+
+*/
+
+const products = (arr) => {
+  let newArr = [];
+  for (let i = 0; i< arr.length; i++) {
+    let tempNum = 1;
+    for (let j=0; j< arr.length; j++) {
+      if(arr[j] !== arr[i]) {
+        tempNum *= arr[j];
+      }
+    }
+    newArr.push(tempNum);
+  }
+  return newArr;
+};
+
+/* 
+2D array
+Write an algorithm which searches through a 2D array, and whenever it 
+finds a zero should set the entire row and column to zero.
+
+Input: 
+[[1,0,1,1,0],
+[0,1,1,1,0],
+[1,1,1,1,1],
+[1,0,1,1,1],
+[1,1,1,1,1]];
+*/
+
+const zeroer = (arr) => {
+
+}
 
 
 function main() {
@@ -170,6 +217,10 @@ function main() {
   // REMOVE CHARACTERS
   // output: 'Bttl f th Vwls: Hw vs. Grzny'
   console.log('removedChars: ', removeChars('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou'));
+
+  //Products
+  //Output:[108, 36, 12, 27]
+  console.log('Products:', products([1, 3, 9, 4]) );
 }
 
 main();
