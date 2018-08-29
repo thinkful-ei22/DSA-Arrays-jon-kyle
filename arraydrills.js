@@ -63,28 +63,30 @@ class Array {
   }
 }
 
-Array.SIZE_RATIO = 3;
+function main() {
+  Array.SIZE_RATIO = 3;
+  
+  //create an instance of the array class
+  let arr = new Array();
+  
+  //add an item to the array
+  arr.push('tauhida');
+  // arr.push(3);
+  // arr.push(5);
+  // arr.push(15);
+  // arr.push(19);
+  // arr.push(45);
+  // arr.push(10);
+  
+  // arr.pop();
+  // arr.pop();
+  // arr.pop();
+  
+  // console.log(arr);
+  console.log(arr.get(0));
+}
 
-//create an instance of the array class
-let arr = new Array();
-
-//add an item to the array
-arr.push('tauhida');
-// arr.push(3);
-// arr.push(5);
-// arr.push(15);
-// arr.push(19);
-// arr.push(45);
-// arr.push(10);
-
-// arr.pop();
-// arr.pop();
-// arr.pop();
-
-
-// console.log(arr);
-console.log(arr.get(0));
-
+main();
 // Array { length: 1, _capacity: 3, ptr: 0 }
  
 /*
